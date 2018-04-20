@@ -32,3 +32,43 @@ export const fetchCheeses = () => dispatch => {
         dispatch(fetchCheesesError(err));
     });
 };
+
+
+export const ADD_CHEESE_SUCCESS = 'ADD_CHEESE_SUCCESS';
+export const addCheeseSuccess = cheeses => ({
+    type: ADD_CHEESE_SUCCESS,
+    cheeses
+})
+
+export const ADD_CHEESE_REQUEST = 'ADD_CHEESE_REQUEST';
+export const addCheeseRequest = () => ({
+    type: ADD_CHEESE_REQUEST
+})
+
+export const ADD_CHEESE = 'ADD_CHEESE';
+export const addCheese = (values) => dispatch => {
+    dispatch(addCheeseRequest())
+    console.log('STRINGIFIED VALUES:',JSON.stringify(values));
+    const newItem = { name: values };
+    fetch(`${API_BASE_URL}/api/cheeses`, {
+        method: 'POST', 
+        body: JSON.stringify(newItem),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          }
+    })
+    .then(res => {
+        if (!res.ok) {
+            return Promise.reject(res.statusText);
+        }
+        return res.json();
+    })
+    .then(cheese => {
+        dispatch(addCheeseSuccess(cheese));
+    }).catch(err => {
+        console.error(err);
+    });
+};
+
+

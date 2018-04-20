@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import CheeseList from './components/cheese-list';
 import store from './store';
 import './index.css';
-import { fetchCheeses } from './actions/cheese';
 
 
 
