@@ -2,7 +2,7 @@ import {
     FETCH_CHEESES_REQUEST, 
     FETCH_CHEESES_SUCCESS, 
     FETCH_CHEESES_ERROR
-} from '../actions';
+} from '../actions/cheese';
 
 const initialState = {
     cheeses: [],
@@ -10,7 +10,7 @@ const initialState = {
     error: null
 }
 
-export function cheesesReducer(state=initialState, action) {
+export default function cheesesReducer(state=initialState, action) {
     if (action.type === FETCH_CHEESES_REQUEST) {
         return Object.assign({}, state, {
             loading: true
