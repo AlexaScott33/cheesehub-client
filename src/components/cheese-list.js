@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Header from './header';
 import { fetchCheeses, addCheese } from '../actions/cheese';
 
 export class CheeseList extends React.Component {
@@ -17,6 +18,7 @@ export class CheeseList extends React.Component {
         ))
       return (
         <div>
+            <Header />
             <form onSubmit={(e) => {
                 e.preventDefault();
 
